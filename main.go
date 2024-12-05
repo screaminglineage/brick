@@ -1,6 +1,7 @@
 package main
 
 import (
+    "bufio"
     "fmt"
     "os"
 )
@@ -41,6 +42,7 @@ func find_matching_open_bracket(input string, index int) int {
 }
 
 func execute(input string, tape []byte) {
+    reader := bufio.NewReader(os.Stdin)
     ip := 0
     tp := 0
     for {
@@ -67,7 +69,12 @@ func execute(input string, tape []byte) {
                 }
             case '.': fmt.Print(string(tape[tp]))
             case ',':
-                panic("Taking input is not yet implemented")
+                b, err := reader.ReadByte()
+                if err != nil {
+                    fmt.Println("Expected character(s), got:", err)
+                    return
+                }
+                tape[tp] = b
         }
         ip += 1
     }

@@ -11,6 +11,5 @@ $ cd brick
 $ go run . examples/<EXAMPLE>.bf
 ```
 ## TODO
- - Implement taking user input 
  - Proper error reporting
  - Check if brackets are balanced
